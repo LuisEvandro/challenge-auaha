@@ -1,0 +1,66 @@
+:root {
+  --color-layout-1: #FFFFFF;
+  --color-layout-2: #2C2C2C;
+  --color-layout-3: #000000;
+  --color-layout-4: #F8F8F8;
+  --color-layout-5: #222222;
+  --color-layout-6: #888686;
+  --color-layout-7: #999999;
+  --color-layout-8: #09B183;
+  --color-layout-9: #00000029;
+  --color-layout-10: #0CE21C;
+
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --error: #dc3545;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body{
+  background-color: var(--color-layout-1);
+}
+
+body, input, textarea, button {
+	font: 500 1rem Lato, sans-serif;
+}
+
+.container{
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+:focus {
+  outline: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 1080px) {
+	html{
+		font-size: 93.75%;	//15px
+	}
+}
+
+@media (max-width: 720px) {
+	html{
+		font-size: 87.5%;	//14px
+	}
+}
