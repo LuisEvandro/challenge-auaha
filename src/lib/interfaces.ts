@@ -11,7 +11,11 @@ export interface Product{
     imagePath: string,
     name: string,
     price: number,
-    promotinalPrice: number
+    quantity: number,
+    promotinalPrice?: number,
+    percentageOff?: string,
+    isBestSeller: boolean,
+    isFreghtFree: boolean
 }
 
 export interface Order{

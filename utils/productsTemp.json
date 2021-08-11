@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "imagePath": "/images/products/product01.png",
+        "name": "Anel Banhado Ouro Reto Com Zirconia",
+        "price": 188.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    },
+    {
+        "id": 2,
+        "imagePath": "/images/products/product02.png",
+        "name": "Anel Banhado Ouro Reto Com Zirconia",
+        "price": 188.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    },
+    {
+        "id": 3,
+        "imagePath": "/images/products/product03.png",
+        "name": "Anel Banhado Ouro Reto Com Zirconia",
+        "price": 188.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    },
+    {
+        "id": 4,
+        "imagePath": "/images/products/product04.png",
+        "name": "Anel Banhado Ouro Reto Com Zirconia",
+        "price": 188.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    },
+    {
+        "id": 5,
+        "imagePath": "/images/products/product02.png",
+        "name": "Bricos Banhado Ouro",
+        "price": 120.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    },
+    {
+        "id": 6,
+        "imagePath": "/images/products/product01.png",
+        "name": "Anel Banhado Ouro Reto Com Zirconia",
+        "price": 188.00,
+        "quantity": 1,
+        "isBestSeller": false,
+        "isFreghtFree": false,
+        "promotinalPrice": 5,
+        "percentageOff": "10%"
+    }
+]

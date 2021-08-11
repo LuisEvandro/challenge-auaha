@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-// import { auth, firebase } from "../lib/firebase";
+import firebase from "../lib/firebaseClient";
 import { User } from "../lib/interfaces";
 
 type AuthContextType = {
@@ -13,7 +13,10 @@ type AuthContextProviderProps = {
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<User>()
+
+    // const tableUsers = firebase.database().ref('users')
+    //         tableUsers.push({})
 
     return (
         <AuthContext.Provider value={{
