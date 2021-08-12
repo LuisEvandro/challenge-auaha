@@ -9,6 +9,7 @@
   --color-layout-8: #09B183;
   --color-layout-9: #00000029;
   --color-layout-10: #0CE21C;
+  --color-layout-11: #A7A7A7;
 
   --success: #28a745;
   --info: #17a2b8;
@@ -29,6 +30,10 @@ body{
 
 body, input, textarea, button {
 	font: 500 1rem Lato, sans-serif;
+}
+
+main{
+  padding-top: 178px;
 }
 
 .container{
@@ -58,6 +63,9 @@ a{
 	html{
 		font-size: 93.75%;	//15px
 	}
+  main{
+    padding-top: 68px;
+  }
 }
 
 @media (max-width: 720px) {

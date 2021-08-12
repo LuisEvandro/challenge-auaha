@@ -1,3 +1,11 @@
+.text_center{
+  text-align: center !important;
+}
+.hidden{
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
 .title_promotions_carrosel{
   text-align: center;
   margin-bottom: 30px;
@@ -9,9 +17,7 @@
     font-weight: 600;
   }
 }
-.slider_image{
-  width: 100%;
-}
+
 .button__bar_promotions {
   display: inline-block;
   vertical-align: middle;
@@ -56,6 +62,192 @@
 .button__bar_promotions li button:focus {
   background: var(--color-layout-5);
   outline: 0;
+}
+
+.promotions_carrosel_item{
+  max-width: 310px;
+  max-height: 471px;
+
+  margin-bottom: 30px;
+
+  cursor: pointer;
+
+  .promotions_carrosel_item_image{
+    .spy_button_content{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      top: 250px;
+
+      transition: all .4s ease-in-out;
+
+      opacity: 0;
+      visibility: hidden;
+
+      .spy_button{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        width: 83px;
+        height: 28px;
+  
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 30px;
+  
+        background-color: var(--color-layout-4);
+  
+        p{
+          font-size: 0.75rem;
+          color: var(--color-layout-7);
+        }
+      }
+    }
+
+    .slider_image{
+      height: 310px;
+    }
+
+    .status_buttons_content{
+      position: relative;
+
+      .buttons_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 23px;
+        
+        margin-bottom: 5px;
+
+        gap: 10px;
+
+        .best_seller_button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          max-width: 108px;
+          height: 20px;
+          width: 100%;
+
+          border-radius: 20px;
+          background-color: var(--color-layout-3);
+
+          p{
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-layout-1);
+            text-transform: capitalize;
+          }
+        }
+
+        .free_shipping_button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          max-width: 96px;
+          height: 20px;
+          width: 100%;
+
+          border-radius: 20px;
+          background-color: var(--color-layout-11);
+
+          p{
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-layout-1);
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+
+  .promotions_carrosel_item_descriptions{
+    text-align: center;
+
+    .promotions_carrosel_item_name{
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-layout-5);
+    }
+
+    .promotions_carrosel_item_price_detail{
+      margin-bottom: 16px;
+      
+      .promotions_carrosel_item_price_1{
+        color: var(--color-layout-7);
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .promotions_carrosel_item_price_2{
+        color: var(--color-layout-3);
+        font-size: 1.125rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      .promotions_carrosel_item_parcels{
+        color: var(--color-layout-5);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+    }
+
+    .add_to_cart_content{
+      position: relative;
+      top: -90px;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: all .4s ease-in-out;
+
+      .add_to_cart_button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        max-width: 193px;
+        height: 44px;
+        margin: 0 auto;
+        
+        background-color: var(--color-layout-3);
+        border-radius: 35px;
+
+        font-size:  0.75rem;
+        font-weight: bold;
+        color: var(--color-layout-1);
+
+        p{
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  &:hover{
+    .add_to_cart_content{
+      top: 0;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .promotions_carrosel_item_image{
+      .spy_button_content{
+        top: 155px;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
 }
 
 @media (max-width: 1080px) {

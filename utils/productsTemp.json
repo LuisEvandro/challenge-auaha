@@ -5,8 +5,8 @@
         "name": "Anel Banhado Ouro Reto Com Zirconia",
         "price": 188.00,
         "quantity": 1,
-        "isBestSeller": false,
-        "isFreghtFree": false,
+        "isBestSeller": true,
+        "isFreghtFree": true,
         "promotinalPrice": 5,
         "percentageOff": "10%"
     },
@@ -27,7 +27,7 @@
         "name": "Anel Banhado Ouro Reto Com Zirconia",
         "price": 188.00,
         "quantity": 1,
-        "isBestSeller": false,
+        "isBestSeller": true,
         "isFreghtFree": false,
         "promotinalPrice": 5,
         "percentageOff": "10%"
@@ -39,7 +39,7 @@
         "price": 188.00,
         "quantity": 1,
         "isBestSeller": false,
-        "isFreghtFree": false,
+        "isFreghtFree": true,
         "promotinalPrice": 5,
         "percentageOff": "10%"
     },
@@ -58,11 +58,9 @@
         "id": 6,
         "imagePath": "/images/products/product01.png",
         "name": "Anel Banhado Ouro Reto Com Zirconia",
-        "price": 188.00,
+        "price": 299.00,
         "quantity": 1,
         "isBestSeller": false,
-        "isFreghtFree": false,
-        "promotinalPrice": 5,
-        "percentageOff": "10%"
+        "isFreghtFree": false
     }
 ]

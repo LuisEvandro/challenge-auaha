@@ -31,44 +31,54 @@ export default function Home() {
 
         <div className={'container'}>
           <div className={styles.mosaic_categories_content}>
-            <div className={styles.mosaic_item}>
+            <div className={styles.mosaic_item+' '+styles.mosaic_item_rings}>
               <img 
                 alt="Anéis"
                 src={'/images/categories/banner1.png'}
               />
-              <p>Anéis</p>
+              <div className={styles.mosaic_item_name}>
+                <p>Anéis</p>
+              </div>
             </div>
 
-            <div className={styles.mosaic_item}>
+            <div className={styles.mosaic_item+' '+styles.mosaic_item_earrings}>
               <img 
                 alt="Brincos"
                 src={'/images/categories/banner2.png'}
               />
-              <p>Brincos</p>
+              <div className={styles.mosaic_item_name}>
+                <p>Brincos</p>
+              </div>
             </div>
 
-            <div className={styles.mosaic_item}>
-              <img 
-                alt="Colares"
-                src={'/images/categories/banner5.png'}
-              />
-              <p>Colares</p>
-            </div>
-
-            <div className={styles.mosaic_item}>
+            <div className={styles.mosaic_item+' '+styles.mosaic_item_pendants}>
               <img 
                 alt="Pingentes"
                 src={'/images/categories/banner3.png'}
               />
-              <p>Pingentes</p>
+              <div className={styles.mosaic_item_name}>
+                <p>Pingentes</p>
+              </div>
             </div>
 
-            <div className={styles.mosaic_item}>
+            <div className={styles.mosaic_item+' '+styles.mosaic_item_bracelets}>
               <img 
                 alt="Pulseiras"
                 src={'/images/categories/banner4.png'}
               />
-              <p>Pulseiras</p>
+              <div className={styles.mosaic_item_name}>
+                <p>Pulseiras</p>
+              </div>
+            </div>
+            
+            <div className={styles.mosaic_item+' '+styles.mosaic_item_necklaces}>
+              <img 
+                alt="Colares"
+                src={'/images/categories/banner5.png'}
+              />
+              <div className={styles.mosaic_item_name}>
+                <p>Colares</p>
+              </div>
             </div>
           </div>
         
