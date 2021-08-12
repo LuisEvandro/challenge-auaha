@@ -19,7 +19,7 @@
         "isBestSeller": false,
         "isFreghtFree": false,
         "promotinalPrice": 5,
-        "percentageOff": "10%"
+        "percentageOff": ""
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "isBestSeller": true,
         "isFreghtFree": false,
         "promotinalPrice": 5,
-        "percentageOff": "10%"
+        "percentageOff": ""
     },
     {
         "id": 4,
@@ -52,7 +52,7 @@
         "isBestSeller": false,
         "isFreghtFree": false,
         "promotinalPrice": 5,
-        "percentageOff": "10%"
+        "percentageOff": ""
     },
     {
         "id": 6,
@@ -61,6 +61,8 @@
         "price": 299.00,
         "quantity": 1,
         "isBestSeller": false,
-        "isFreghtFree": false
+        "isFreghtFree": false,
+        "promotinalPrice": null,
+        "percentageOff": ""
     }
 ]

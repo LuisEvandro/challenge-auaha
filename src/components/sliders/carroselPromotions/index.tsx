@@ -107,7 +107,16 @@ export function PromotionsCarrosel({products}: any) {
                         return (
                             <div className={styles.promotions_carrosel_item} key={index} onClick={() => spyProduct(item)}>
                                 <figure className={styles.promotions_carrosel_item_image} key={index}>
-                                    <div className={styles.spy_button_content}><div className={styles.spy_button}><p>Espiar</p></div></div>
+                                    <div className={styles.off_icon_content+' '+ (!item.percentageOff && styles.hidden)}>
+                                        <div className={styles.off_icon}>
+                                            <p>{item.percentageOff} Off</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.spy_button_content}>
+                                        <div className={styles.spy_button}>
+                                            <p>Espiar</p>
+                                        </div>
+                                    </div>
                                     <img src={item.imagePath} alt={'Promoção '+item.name} className={styles.slider_image} />
                                     <div className={styles.status_buttons_content}>
                                         <div className={styles.buttons_card}>

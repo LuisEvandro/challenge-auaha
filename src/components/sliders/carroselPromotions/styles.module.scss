@@ -73,6 +73,31 @@
   cursor: pointer;
 
   .promotions_carrosel_item_image{
+    .off_icon_content{
+      position: relative;
+
+      .off_icon{
+        position: absolute;
+        right: 0;
+
+
+        p{
+          width: 70px;
+          height: 25px;
+
+          font-size: 0.75rem;
+          font-weight: bold;
+          text-transform: capitalize;
+          border-radius: 20px;
+          text-align: center;
+          padding: 5px 0;
+
+          color: var(--color-layout-1);
+          background-color: var(--color-layout-5);
+        }
+      }
+    }
+
     .spy_button_content{
       position: relative;
       display: flex;
