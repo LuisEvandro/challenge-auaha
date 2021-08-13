@@ -7,6 +7,7 @@ import { PromotionsCarrosel } from '../components/sliders/carroselPromotions'
 import productsTemp from '../../utils/productsTemp.json'
 
 import styles from '../styles/home.module.scss'
+import { ClientsFeedback } from '../components/clientsFeedback'
 
 export default function Home() {
   const imagesCarroselMain = [
@@ -25,6 +26,7 @@ export default function Home() {
       </Head>
       
       <div className={styles.slider_main_content}>
+
         <MainCarrosel images={imagesCarroselMain} />
         
         <CardFreghtAndParcel />
@@ -85,6 +87,20 @@ export default function Home() {
           <div className={styles.promotions_content}>
             <PromotionsCarrosel products={productsList} />
           </div>
+        
+          <div className={styles.banners_news_and_highlights_content}>
+            <div className={styles.banner_news}>
+              <img src={'/images/banner_news.png'} alt="Banner de novidades" />
+              <p>Novidades</p>
+            </div>
+
+            <div className={styles.banner_highlights}>
+              <img src={'/images/banner_highlights.png'} alt="Banner de destaques" />
+              <p>Destaques</p>
+            </div>
+          </div>
+        
+          <ClientsFeedback />
         </div>
       </div>
     </>

@@ -3,8 +3,9 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LuisEvandro/challenge-auaha" />
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/LuisEvandro/challenge-auaha" />
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LuisEvandro/challenge-auaha">
+  <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/LuisEvandro/challenge-auaha/main">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/LuisEvandro/challenge-auaha">
 </p>
 <br>
 

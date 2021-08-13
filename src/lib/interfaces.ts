@@ -30,3 +30,10 @@ export interface Banners{
     imagePath: string,
     name: string
 }
+
+export interface FeedbackInterface{
+    id: number,
+    name: string,
+    message: string,
+    create_date: string
+}
