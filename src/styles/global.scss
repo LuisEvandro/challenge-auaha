@@ -10,6 +10,8 @@
   --color-layout-9: #00000029;
   --color-layout-10: #0CE21C;
   --color-layout-11: #A7A7A7;
+  --color-layout-12: #707070;
+  --color-layout-13: #939393;
 
   --success: #28a745;
   --info: #17a2b8;
@@ -57,6 +59,20 @@ a{
   &:hover {
     text-decoration: none;
   }
+}
+
+.loader_default {
+  border: 5px solid var(--color-layout-8);
+  border-top: 5px solid var(--color-layout-1);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media (max-width: 1080px) {

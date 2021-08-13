@@ -8,6 +8,7 @@ import productsTemp from '../../utils/productsTemp.json'
 
 import styles from '../styles/home.module.scss'
 import { ClientsFeedback } from '../components/clientsFeedback'
+import { Newsletter } from '../components/newsletter'
 
 export default function Home() {
   const imagesCarroselMain = [
@@ -100,7 +101,13 @@ export default function Home() {
             </div>
           </div>
         
-          <ClientsFeedback />
+          <div className={styles.feedback_component_div}>
+            <ClientsFeedback />
+          </div>
+
+          <div className={styles.newsletter_component_div}>
+            <Newsletter />
+          </div>
         </div>
       </div>
     </>
