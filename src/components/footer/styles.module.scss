@@ -1,0 +1,109 @@
+.footer_content{
+    display: flex;
+    align-items: center;
+    
+    height: 183px;
+
+    background-color: var(--color-layout-4);
+
+    .footer{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        
+        .footer_column{
+            .footer_column_title{
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--color-layout-5);
+
+                margin-bottom: 10px;
+            }
+
+            .footer_column_item{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                margin-bottom: 10px;
+
+                p{
+                    font-size: 0.8125rem;
+                    color: var(--color-layout-3);
+                    margin-left: 5px;
+                }
+
+                a{
+                    font-size: 0.8125rem;
+                    color: var(--color-layout-3);
+                    cursor: pointer;
+                }
+
+                &:hover{
+                    p,a{
+                        color: var(--color-layout-13);
+                    }
+                }
+            }
+
+            .footer_column_payment_items{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .payment_item{
+                    margin-right: 5px;
+
+                    &:last-of-type{
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .footer_social_items{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .social_item{
+                    margin-right: 15px;
+
+                    &:last-of-type{
+                        margin-right: 0px !important;
+                    }
+
+                    &:hover{
+                        opacity: .7;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.copyright_content{
+    margin: 18px auto;
+    text-align: center;
+
+    .copyright_text{
+        color: var(--color-layout-2);
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 720px) {
+    .footer_content{
+        height: auto;
+        padding: 20px 0;
+    
+        .footer{
+            flex-direction: column;
+
+            .footer_column{
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

@@ -21,6 +21,8 @@ export function Newsletter(){
                     position: toast.POSITION.BOTTOM_LEFT
                 });
                 setIsLoading(false)
+                setName('')
+                setEmail('')
             }, 3000)
         }else{
             toast.error('Preencha o nome e e-mail corretamente !', {
@@ -40,11 +42,11 @@ export function Newsletter(){
 
             <div className={styles.newsletter_content_form}>
                 <div className={styles.newsletter_input_name}>
-                    <input type="text" name="name" alt="Nome newsletter" placeholder="Seu nome" onChange={(e) => setName(e.target.value)} />
+                    <input type="text" name="name" alt="Nome newsletter" placeholder="Seu nome" disabled={isLoading} onChange={(e) => setName(e.target.value)} />
                 </div>
 
                 <div className={styles.newsletter_input_email}>
-                    <input type="text" name="e-mail" alt="E-mail newsletter" placeholder="Seu e-mail" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="text" name="e-mail" alt="E-mail newsletter" placeholder="Seu e-mail" disabled={isLoading} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 <div className={styles.newsletter_button_send}>

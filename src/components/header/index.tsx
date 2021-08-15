@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Product } from '../../lib/interfaces';
 
-export function Header() {
+export default function Header() {
     const [ search, setSearch ] = useState<string>('')
     const [ totalProductsCart, setTotalProductsCart ] = useState<number>(0)
     const [ totalPriceCart, setTotalPriceCart ] = useState<number>(0)

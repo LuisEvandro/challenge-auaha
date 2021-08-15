@@ -91,4 +91,15 @@
             }
         }
     }
+    
+    @media (max-width: 1080px) {
+        .newsletter_content_form{
+            flex-direction: column;
+
+            .newsletter_input_name, .newsletter_input_email{
+                margin: 10px auto;
+
+            }
+        }
+    }
 }
