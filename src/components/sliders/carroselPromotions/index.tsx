@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CartContext } from "../../../contexts/CartContext";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from './styles.module.scss'
@@ -7,11 +10,10 @@ import { calculateInstallments } from '../../../../utils/functions'
 import { Product } from '../../../lib/interfaces'
 
 import Slider from "react-slick";
-import { useLayoutEffect, useState } from "react";
 
 export function PromotionsCarrosel({products}: any) {
-    
-    const [widthSize, setWidthSize] = useState<number>(0);
+
+    const { addItemToCart } = useContext(CartContext);
 
     const settings = {
         dots: false,
@@ -64,21 +66,9 @@ export function PromotionsCarrosel({products}: any) {
             }
           ]
     };
-    
-    useLayoutEffect(() => {
-        function updateSize() {
-            setWidthSize(window.innerWidth);
-        }
-        
-        window.addEventListener('resize', updateSize);
-        
-        updateSize();
-        
-        return () => window.removeEventListener('resize', updateSize);
-    }, []);
 
     function spyProduct(product: Product){
-        console.log(product);
+        addItemToCart(product)
     }
 
     function SampleNextArrow(props: any) {
@@ -102,8 +92,8 @@ export function PromotionsCarrosel({products}: any) {
                 <p>Promoções</p>
             </div>
             <Slider {...settings}>
-                {products.length > 0 ? (
-                    products.map((item: Product, index: number) => {
+                {products.products.length > 0 ? (
+                    products.products.map((item: Product, index: number) => {
                         return (
                             <div className={styles.promotions_carrosel_item} key={index} onClick={() => spyProduct(item)}>
                                 <figure className={styles.promotions_carrosel_item_image} key={index}>

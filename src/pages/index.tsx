@@ -1,24 +1,28 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 
 import { MainCarrosel } from '../components/sliders/carroselMain'
 import { CardFreghtAndParcel } from '../components/cardFreghtAndParcel'
 import { PromotionsCarrosel } from '../components/sliders/carroselPromotions'
 
 import productsTemp from '../../utils/productsTemp.json'
+import firebase from 'firebase/app'
+import initFirebase from '../lib/firebase'
 
 import styles from '../styles/home.module.scss'
 import { ClientsFeedback } from '../components/clientsFeedback'
 import { Newsletter } from '../components/newsletter'
+import { Product } from '../lib/interfaces'
 
-export default function Home() {
+initFirebase()
+
+export default function Home(products: Product[]) {
   const imagesCarroselMain = [
     "/images/banner_main.png",
     "/images/banner_main.png",
     "/images/banner_main.png",
     "/images/banner_main.png"
   ];
-
-  const productsList = productsTemp;
 
   return (
     <>
@@ -86,7 +90,7 @@ export default function Home() {
           </div>
         
           <div className={styles.promotions_content}>
-            <PromotionsCarrosel products={productsList} />
+            <PromotionsCarrosel products={products} />
           </div>
         
           <div className={styles.banners_news_and_highlights_content}>
@@ -124,4 +128,30 @@ export default function Home() {
       </div>
     </>
   )
+}
+export const getStaticProps = async () => {
+  let products = []
+  try {
+    const querySnapshot = await firebase
+      .firestore()
+      .collection('products')
+      .orderBy('name', 'desc')
+      .get();
+  
+    
+    querySnapshot.forEach(function (doc) {
+      products.push({
+        id: doc.id,
+        ... doc.data(),
+      })
+    })
+  } catch(error) {
+    console.log('Error: ', error)
+  }
+
+  return {
+      props: {
+        products
+      }
+  }
 }

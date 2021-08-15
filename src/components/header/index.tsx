@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductCartHeader } from '../productCartHeader'
 
 import styles from './styles.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Product } from '../../lib/interfaces';
+import { CartContext } from '../../contexts/CartContext';
 
 export default function Header() {
     const [ search, setSearch ] = useState<string>('')
@@ -12,50 +13,19 @@ export default function Header() {
     const [ totalPriceCart, setTotalPriceCart ] = useState<number>(0)
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
 
-    const productsTemp = [
-        {
-            "id": 1,
-            "imagePath": "/images/products/product01.png",
-            "name": "Anel Banhado Ouro Reto Com Zirconia",
-            "price": 188.00,
-            "quantity": 1,
-            "isBestSeller": false,
-            "isFreghtFree": false
-        },
-        {
-            "id": 2,
-            "imagePath": "/images/products/product03.png",
-            "name": "Anel Banhado Ouro Reto Com Zirconia",
-            "price": 188.00,
-            "quantity": 1,
-            "isBestSeller": false,
-            "isFreghtFree": false
-        },
-        {
-            "id": 3,
-            "imagePath": "/images/products/product02.png",
-            "name": "Anel Banhado Ouro Reto Com Zirconia",
-            "price": 188.00,
-            "quantity": 1,
-            "isBestSeller": false,
-            "isFreghtFree": false
-        }
-    ]
+    const { products, valueTotal } = useContext(CartContext)
 
     useEffect(() => {
         let totalPrice = 0
         let totalQuantity = 0
-        productsTemp.forEach((item: Product) => {
-            let price = ((item.price * item.quantity) + totalPrice)
-            let quantity = (item.quantity + totalQuantity)
-
-            totalPrice = price
-            totalQuantity = quantity
+        products.forEach((item: Product) => {
+            totalPrice = ((item.price * item.quantity) + totalPrice)
+            totalQuantity = (item.quantity + totalQuantity)
         })
 
         setTotalPriceCart(totalPrice)
         setTotalProductsCart(totalQuantity)
-    }, [])
+    }, [valueTotal])
 
     const searchProduct = (stringSearch: string) => {
         console.log('Procurar por :', stringSearch);
@@ -163,11 +133,11 @@ export default function Header() {
 
                             <div className={styles.pop_over_myaccount}>
                                 <div className={styles.pop_myaccount_auth}>
-                                    <Link href={'/login'}>
+                                    <Link href={'/authentication/login'}>
                                         <a>Entrar</a>
                                     </Link>
 
-                                    <Link href={'/register'}>
+                                    <Link href={'/authentication/register'}>
                                         <a>Cadastrar</a>
                                     </Link>
                                 </div>
@@ -210,20 +180,35 @@ export default function Header() {
                             <div className={styles.pop_over_cart}>
                                 <div className={styles.pop_cart_products}>
                                     {
-                                        productsTemp.map((productItem: Product) => {
-                                            return(
-                                                <ProductCartHeader product={productItem} key={productItem.id} />
-                                            )
-                                        })
+                                        products.length > 0 ? (
+                                            products.map((productItem: Product) => {
+                                                return(
+                                                    <ProductCartHeader product={productItem} key={productItem.id} />
+                                                )
+                                            })
+                                        ) : (
+                                            <div className={styles.pop_cart_products_empty}>
+                                                <span className={"material-icons"}>production_quantity_limits</span>
+                                                <p>Carrinho vazio</p>
+                                            </div>
+                                        )
                                     }
                                 </div>
 
                                 <div className={styles.pop_cart_footer}>
                                     <p className={styles.pop_cart_subtotal}>Subtotal <span>{(totalPriceCart).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span></p>
 
-                                    <div className={styles.pop_cart_finally_cart}>
-                                        <p>Finalizar compra</p>
-                                    </div>
+                                    {
+                                        products.length > 0 ? (
+                                            <div className={styles.pop_cart_finally_cart}>
+                                                <p>Finalizar compra</p>
+                                            </div>
+                                        ) : ( 
+                                            <div className={styles.pop_cart_finally_cart} style={{opacity: .5}}>
+                                                <p>Finalizar compra</p>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -280,7 +265,7 @@ export default function Header() {
                         <div className={styles.pop_over_cart}>
                             <div className={styles.pop_cart_products}>
                                 {
-                                    productsTemp.map((productItem: Product) => {
+                                    products.map((productItem: Product) => {
                                         return(
                                             <ProductCartHeader product={productItem} key={productItem.id} />
                                         )

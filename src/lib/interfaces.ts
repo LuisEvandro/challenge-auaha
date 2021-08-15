@@ -1,5 +1,5 @@
 export interface User{
-    id: number,
+    id: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -7,11 +7,11 @@ export interface User{
 }
 
 export interface Product{
-    id: number,
+    id: string,
     imagePath: string,
     name: string,
     price: number,
-    quantity: number,
+    quantity?: number,
     promotinalPrice?: number,
     percentageOff?: string,
     isBestSeller: boolean,
@@ -19,14 +19,14 @@ export interface Product{
 }
 
 export interface Order{
-    id: number,
+    id: string,
     products: Product[],
     createdAt: string,
     finalPrice: number
 }
 
 export interface Banners{
-    id: number,
+    id: string,
     imagePath: string,
     name: string
 }

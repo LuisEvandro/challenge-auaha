@@ -1,8 +1,13 @@
 import styles from './styles.module.scss'
 
 import Image from 'next/image'
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 export function ProductCartHeader({product}: any) {
+
+    const { minItemCart, removeItemCart } = useContext(CartContext);
+
     return (
         <>
             <article className={styles.product_item_cart}>
@@ -29,6 +34,9 @@ export function ProductCartHeader({product}: any) {
                                 alt="Remover produto"
                                 src={"/images/close-line.svg"}
                                 objectFit="cover"
+                                onClick={() => { 
+                                    product.quantity > 1 ? minItemCart(product.id) : removeItemCart(product.id)
+                                }}
                             />
                         </div>
                     </div>

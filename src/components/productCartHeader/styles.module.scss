@@ -14,8 +14,10 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        width: 100%;
 
         .product_item_descriptions{
+
             .product_item_name{
                 font-size: 0.875rem;
                 color: var(--color-layout-5);

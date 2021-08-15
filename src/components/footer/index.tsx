@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 
 export default function Footer(){
     return (
-        <>
+        <div className={styles.footer_box}>
             <div className={styles.footer_content}>
                 <div className={'container'}>
                     <div className={styles.footer}>
@@ -224,6 +224,6 @@ export default function Footer(){
                     objectFit={"contain"}
                 />
             </div>
-        </>
+        </div>
     )
 }

@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import firebase from "../lib/firebaseClient";
 import { User } from "../lib/interfaces";
 
 type AuthContextType = {
@@ -20,7 +19,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     return (
         <AuthContext.Provider value={{
-            user 
+            user
         }}>
             {props.children}
         </AuthContext.Provider>
