@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
-import { AuthContextProvider } from '../contexts/AuthContext';
+import { AuthProvider } from '../contexts/AuthContext';
 import { CartProvider } from '../contexts/CartContext';
+import initFirebase from '../lib/firebase'
 
 import '../styles/global.scss'
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,10 +10,11 @@ import { ToastContainer } from 'react-toastify';
 import Header from '../components/header'
 import Footer from '../components/footer';
 
+initFirebase()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthContextProvider>
+    <AuthProvider>
       <CartProvider>
         <div>
           <ToastContainer />
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Footer />
         </div>
       </CartProvider>
-    </AuthContextProvider>
+    </AuthProvider>
   )
 }
 export default MyApp

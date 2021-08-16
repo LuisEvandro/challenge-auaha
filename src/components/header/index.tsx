@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Product } from '../../lib/interfaces';
 import { CartContext } from '../../contexts/CartContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
     const [ search, setSearch ] = useState<string>('')
@@ -14,12 +15,13 @@ export default function Header() {
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
 
     const { products, valueTotal } = useContext(CartContext)
+    const { logout } = useContext(AuthContext)
 
     useEffect(() => {
         let totalPrice = 0
         let totalQuantity = 0
         products.forEach((item: Product) => {
-            totalPrice = ((item.price * item.quantity) + totalPrice)
+            totalPrice = (((item.price - item.promotinalPrice) * item.quantity) + totalPrice)
             totalQuantity = (item.quantity + totalQuantity)
         })
 
@@ -35,12 +37,6 @@ export default function Header() {
 		if(event.key === 'Enter'){
             searchProduct(search);
         }
-	};
-
-    const logout = (event: any) => {
-		event.preventDefault();
-
-        console.log("SAIR");
 	};
 
     return (
@@ -150,7 +146,7 @@ export default function Header() {
                                         <a>Minha conta</a>
                                     </Link>
 
-                                    <a onClick={(event) => logout(event)}>Sair</a>
+                                    <a onClick={() => logout()}>Sair</a>
                                 </div>
                             </div>
                         </div>
@@ -288,13 +284,13 @@ export default function Header() {
             <div className={styles.header_nav_mobile+' '+(isOpen && styles.open)}>
                 <div className={styles.header_nav_account}>
                     <div>
-                        <Link href={'/login'}>
+                        <Link href={'/authentication/login'}>
                             <a>Entrar</a>
                         </Link>
                     </div>
 
                     <div>
-                        <Link href={'/register'}>
+                        <Link href={'/authentication/register'}>
                             <a>Cadastrar</a>
                         </Link>
                     </div>

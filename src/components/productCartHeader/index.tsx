@@ -24,7 +24,12 @@ export function ProductCartHeader({product}: any) {
                         <div className={styles.product_item_descriptions}>
                             <p className={styles.product_item_name}>{product.name}</p>
                             <p className={styles.product_item_quantity_and_price}>
-                                Qtd. {product.quantity} <span>{(product.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
+                                Qtd. {product.quantity} 
+                                <span>
+                                    {
+                                        (product.price - product.promotinalPrice).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                                    }
+                                </span>
                             </p>
                         </div>
                         <div className={styles.product_item_remove}>

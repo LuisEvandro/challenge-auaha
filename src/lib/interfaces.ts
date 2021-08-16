@@ -1,5 +1,5 @@
 export interface User{
-    id: string,
+    id?: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -12,7 +12,7 @@ export interface Product{
     name: string,
     price: number,
     quantity?: number,
-    promotinalPrice?: number,
+    promotinalPrice: number,
     percentageOff?: string,
     isBestSeller: boolean,
     isFreghtFree: boolean

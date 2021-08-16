@@ -7,14 +7,11 @@ import { PromotionsCarrosel } from '../components/sliders/carroselPromotions'
 
 import productsTemp from '../../utils/productsTemp.json'
 import firebase from 'firebase/app'
-import initFirebase from '../lib/firebase'
 
 import styles from '../styles/home.module.scss'
 import { ClientsFeedback } from '../components/clientsFeedback'
 import { Newsletter } from '../components/newsletter'
 import { Product } from '../lib/interfaces'
-
-initFirebase()
 
 export default function Home(products: Product[]) {
   const imagesCarroselMain = [
@@ -139,7 +136,7 @@ export const getStaticProps = async () => {
       .get();
   
     
-    querySnapshot.forEach(function (doc) {
+    querySnapshot.forEach(function (doc: any) {
       products.push({
         id: doc.id,
         ... doc.data(),

@@ -40,10 +40,10 @@ export function CartProvider({ children }:CartProviderProps){
     function countTotalCart(){
         let count = 0
         setValueTotal(0)
-        products.forEach(prod => {
-            count = (count + (prod.quantity * prod.price))
-            setValueTotal(count)
+        products.forEach((prod: Product) => {
+            count = (count + (prod.quantity * (prod.price - prod.promotinalPrice)))
         })
+        setValueTotal(count)
     }
 
     function addItemToCart(product: Product){
