@@ -1,0 +1,91 @@
+.login_content{
+    .login_title{
+        text-align: center;
+
+        h2{
+            color: var(--color-layout-5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    }
+
+    .form_content{
+        display: grid;
+        grid-template-columns: auto;
+        grid-column-gap: 30px;
+        grid-row-gap: 15px;
+
+        max-width: 400px;
+
+        margin: 30px auto;
+
+        .form_control{
+            margin-bottom: 15px;
+            .form_text_input{
+                display: flex;
+                align-items: center;
+        
+                padding: 0 30px 0 20px;
+                height: 44px;
+                
+                width: 100%;
+        
+                background-color: var(--color-layout-4);
+                border: 1px solid var(--color-layout-12) !important;
+                border-radius: 50px;
+
+                input{
+                    color: var(--color-layout-5);
+                    font-size: 1rem;
+                    
+                    width: 100%;
+                    background: transparent !important;
+                    border: none !important;
+                }
+
+                span{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        
+
+        button{
+            background: transparent !important;
+            border: none !important;
+
+            height: 50px;
+            width: 100%;
+
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            
+            color: var(--color-layout-1);
+        }
+        .form_botton_send,
+        .form_botton_login{
+
+            border-radius: 50px;
+            background-color: var(--color-layout-5);
+            cursor: pointer;
+
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                background-color: var(--color-layout-13);
+            }
+        }
+    }
+
+    @media (max-width: 720px) {
+        .form_content{
+            grid-column-gap: 15px;
+        }
+        .form_botton_send,
+        .form_botton_login{
+            max-width: none !important;
+        } 
+    }
+}

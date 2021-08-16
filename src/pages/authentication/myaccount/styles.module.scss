@@ -1,0 +1,31 @@
+.myaccount_page_container{
+    margin: 80px 0;
+
+    .account_info_content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .info_items{
+            margin-left: 30px;
+        }
+        .info_item{
+            margin: 25px 0;
+
+            .info_item_title{
+                color: var(--color-layout-7);
+                font-weight: bold;
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            .info_item_text{
+                color: var(--color-layout-5);
+                font-weight: 600;
+                font-size: 1.0625rem;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

@@ -2,11 +2,12 @@ import { useContext, useEffect } from 'react';
 import router from 'next/router';
 
 import styles from './styles.module.scss'
+
 import { AuthContext } from '../../../contexts/AuthContext';
 
-import RegisterComponent from "../../../components/register";
+import LoginComponent from "../../../components/login";
 
-export default function Register() {
+export default function Login() {
 
     const { isAuthenticated } = useContext(AuthContext)
 
@@ -20,8 +21,8 @@ export default function Register() {
 
     return (
         <div className="container">
-            <div className={styles.register_page_container}>
-                <RegisterComponent />
+            <div className={styles.login_page_container}>
+                <LoginComponent />
             </div>
         </div>
     )

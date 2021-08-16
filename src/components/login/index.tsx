@@ -1,79 +1,36 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { toast } from 'react-toastify';
+
 import router from 'next/router';
-import { User } from "../../lib/interfaces";
 import styles from './styles.module.scss'
 
-export default function RegisterComponent() {
-    const { createUser, user } = useContext(AuthContext)
+export default function LoginComponent() {
+    const { login, user } = useContext(AuthContext)
 
     const [ isLoading, setIsLoading ] = useState(false)
     const [ showPassword, setShowPassword ] = useState(false)
 
-    const [ firstName, setFirstName ] = useState<string>('')
-    const [ lastName, setLastName ] = useState<string>('')
     const [ email, setEmail ] = useState<string>('')
     const [ password, setPassword ] = useState<string>('')
 
-    async function reqRegister(e: any){
+    async function reqLogin(e: any){
         e.preventDefault()
         
         setIsLoading(true)
-        if(password.length < 6){
-            toast.warning('Senha deve conter no minimo 6 caracteres !', {
-                autoClose: 4000,
-                position: toast.POSITION.BOTTOM_LEFT
-            });
-        }else{
-            const user = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password
-            }
-            
-            await createUser(user);
-        }
+        
+        await login(email,password, true)
+
         setIsLoading(false)
     }
 
     return (
         <>
-            <div className={styles.register_content}>
-                <div className={styles.register_title}>
-                    <h2>Registrar-se</h2>
+            <div className={styles.login_content}>
+                <div className={styles.login_title}>
+                    <h2>Login</h2>
                 </div>
-                <form onSubmit={reqRegister} className={styles.form_content}>
-                    <div className={styles.form_control}>
-                        <div className={styles.form_text_input}>
-                            <input
-                                type="text"
-                                name="primeiro_nome"
-                                alt="Primeiro Nome"
-                                placeholder="Primeiro Nome"
-                                required
-                                value={firstName}
-                                onChange={(event) => setFirstName(event.target.value)}
-                                disabled={isLoading}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={styles.form_control}>
-                        <div className={styles.form_text_input}>
-                            <input
-                                type="text"
-                                name="ultimo_nome"
-                                alt="Último Nome"
-                                placeholder="Último Nome"
-                                required
-                                value={lastName}
-                                onChange={(event) => setLastName(event.target.value)}
-                                disabled={isLoading}
-                            />
-                        </div>
-                    </div>
+                <form onSubmit={reqLogin} className={styles.form_content}>
 
                     <div className={styles.form_control}>
                         <div className={styles.form_text_input}>
@@ -112,17 +69,17 @@ export default function RegisterComponent() {
                             type="submit"
                             disabled={isLoading}
                         >
-                            Cadastrar
+                            Entrar
                         </button>
                     </div>
 
                     <div className={styles.form_botton_login}>
                         <button
-                            onClick={() => router.push('/authentication/login')}
+                            onClick={() => router.push('/authentication/register')}
                             type="button"
                             disabled={isLoading}
                         >
-                            Ir para login
+                            Ir para o registro
                         </button>
                     </div>
                 </form>

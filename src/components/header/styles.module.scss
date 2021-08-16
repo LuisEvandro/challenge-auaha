@@ -244,6 +244,8 @@
             background-color: var(--color-layout-4);
             padding: 20px 0;
 
+            height: 115px;
+
             a{
                 font-size: 0.8125rem;
                 color: var(--color-layout-7) !important;
@@ -417,7 +419,7 @@
         opacity: 0;
         visibility: hidden;
 
-        transition: all .5s ease-in-out;
+        transition: all .3s ease-in-out;
 
         &:after{
             content: "";

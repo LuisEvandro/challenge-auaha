@@ -8,7 +8,7 @@ import firebase from 'firebase/app'
 interface AuthContextInterface{
     user: User | undefined,
     isAuthenticated: boolean,
-    login: (paramEmail: string, paramPass: string, page?: string) => void,
+    login: (paramEmail: string, paramPass: string) => void,
     createUser: (paramUser: User, page?: string) => void,
     createOrder: (paramOrder: Order) => void,
     logout: () => void,
@@ -30,9 +30,9 @@ export function AuthProvider({ children }:AuthProviderProps){
         let userResult = sessionStorage.getItem('user')
 
         if(userResult){
-            sessionStorage.setItem('user', userResult)
-            setUser(JSON.parse(userResult))
             setIsAuthenticated(true)
+            setUser(JSON.parse(userResult))
+            sessionStorage.setItem('user', userResult)
         }
     }, [])
 
@@ -70,7 +70,7 @@ export function AuthProvider({ children }:AuthProviderProps){
         }
     }
 
-    async function login(paramEmail: string, paramPass: string, page?: string){
+    async function login(paramEmail: string, paramPass: string){
         if(!paramEmail || !paramPass){
             toast.error('Erro ao tentar logar, tente novamente !', {
                 autoClose: 4000,
@@ -82,7 +82,6 @@ export function AuthProvider({ children }:AuthProviderProps){
                 const userResult = await getUserByEmail(paramEmail);
 
                 if(userResult.id != ''){
-
                     if(userResult.password === paramPass){
 
                         sessionStorage.setItem('user', JSON.stringify(userResult))
@@ -94,7 +93,7 @@ export function AuthProvider({ children }:AuthProviderProps){
                             position: toast.POSITION.BOTTOM_RIGHT
                         });
 
-                        router.push('/')
+                        router.reload()
                     }else{
                         toast.error('Senha incorreta !', {
                             autoClose: 4000,

@@ -15,7 +15,7 @@ export default function Header() {
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
 
     const { products, valueTotal } = useContext(CartContext)
-    const { logout } = useContext(AuthContext)
+    const { user, isAuthenticated, logout } = useContext(AuthContext)
 
     useEffect(() => {
         let totalPrice = 0
@@ -129,11 +129,11 @@ export default function Header() {
 
                             <div className={styles.pop_over_myaccount}>
                                 <div className={styles.pop_myaccount_auth}>
-                                    <Link href={'/authentication/login'}>
+                                    <Link href={isAuthenticated ? '/authentication/myaccount':'/authentication/login'}>
                                         <a>Entrar</a>
                                     </Link>
 
-                                    <Link href={'/authentication/register'}>
+                                    <Link href={isAuthenticated ? '/authentication/myaccount':'/authentication/register'}>
                                         <a>Cadastrar</a>
                                     </Link>
                                 </div>
@@ -142,11 +142,14 @@ export default function Header() {
                                         <a>Meus pedidos</a>
                                     </Link>
 
-                                    <Link href={'/authentication/account'}>
+                                    <Link href={'/authentication/myaccount'}>
                                         <a>Minha conta</a>
                                     </Link>
-
-                                    <a onClick={() => logout()}>Sair</a>
+                                    {
+                                        isAuthenticated && (
+                                            <a onClick={() => logout()}>Sair</a>
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -283,17 +286,34 @@ export default function Header() {
             
             <div className={styles.header_nav_mobile+' '+(isOpen && styles.open)}>
                 <div className={styles.header_nav_account}>
-                    <div>
-                        <Link href={'/authentication/login'}>
-                            <a>Entrar</a>
-                        </Link>
-                    </div>
+                    {
+                        isAuthenticated ? (
+                            <>
+                                <div>
+                                    <Link href={'/authentication/myaccount'}>
+                                        <a>Minha conta</a>
+                                    </Link>
+                                </div>
 
-                    <div>
-                        <Link href={'/authentication/register'}>
-                            <a>Cadastrar</a>
-                        </Link>
-                    </div>
+                                <div>
+                                    <a onClick={() => logout()}>Sair</a>
+                                </div>
+                            </>
+                        ):(
+                            <>
+                                <div>
+                                    <Link href={'/authentication/login'}>
+                                        <a>Entrar</a>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link href={'/authentication/register'}>
+                                        <a>Cadastrar</a>
+                                    </Link>
+                                </div>
+                            </>
+                        )
+                    }
                 </div>
 
                 <div className={styles.header_nav_options}>
