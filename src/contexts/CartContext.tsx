@@ -41,7 +41,7 @@ export function CartProvider({ children }:CartProviderProps){
         let count = 0
         setValueTotal(0)
         products.forEach((prod: Product) => {
-            count = (count + (prod.quantity * (prod.price - prod.promotinalPrice)))
+            count = (count + ((prod.quantity ? prod.quantity : 1) * (prod.price - prod.promotinalPrice)))
         })
         setValueTotal(count)
     }
@@ -52,7 +52,7 @@ export function CartProvider({ children }:CartProviderProps){
             let productExists = newCart.find(f => f.id == product.id)
             
             if(productExists){
-                sumItemCart(productExists.id)
+                sumItemCart((productExists.id ? productExists.id : ''))
             }else{
                 product.quantity = 1;
                 newCart.push(product)
@@ -97,7 +97,7 @@ export function CartProvider({ children }:CartProviderProps){
         let temp = 0;
         products.map((item) => {
             if(item.id == id){
-                item.quantity = item.quantity + 1
+                item.quantity = (item.quantity ? item.quantity : 1) + 1
                 temp = item.quantity
             }
         });
@@ -110,7 +110,7 @@ export function CartProvider({ children }:CartProviderProps){
         let temp = 0;
         products.map((item) => {
             if(item.id == id){
-                item.quantity = item.quantity - 1
+                item.quantity = (item.quantity ? item.quantity : 1) - 1
                 temp = item.quantity
             }
                 

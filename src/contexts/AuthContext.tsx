@@ -45,9 +45,13 @@ export function AuthProvider({ children }:AuthProviderProps){
                                         .get();
             
             if(!querySnapshot.empty){
+                const data = querySnapshot.docs[0].data();
                 const userData: User = {
                     id: querySnapshot.docs[0].id,
-                    ... querySnapshot.docs[0].data()
+                    email: data.email,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    password: data.password
                 }
                 return userData
             }
