@@ -17,6 +17,16 @@
     }
 
     .box_list_orders{
+        .order_isEmpty{
+            text-transform: uppercase;
+            text-align: center;
+            span{
+                font-size: 60px;
+            }
+            h2{
+                margin-top: 20px;
+            }
+        }
         .order_content{
             margin: 30px 0;
             cursor: pointer;

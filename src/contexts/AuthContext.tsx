@@ -10,7 +10,6 @@ interface AuthContextInterface{
     isAuthenticated: boolean,
     login: (paramEmail: string, paramPass: string) => void,
     createUser: (paramUser: User, page?: string) => void,
-    createOrder: (orderProducts: Product[], orderPrice: number) => void,
     logout: () => void,
 }
 
@@ -27,7 +26,7 @@ export function AuthProvider({ children }:AuthProviderProps){
     const router = useRouter()
 
     useEffect(() => {
-        let userResult = sessionStorage.getItem('user')
+        const userResult = sessionStorage.getItem('user')
 
         if(userResult){
             setIsAuthenticated(true)
@@ -117,7 +116,7 @@ export function AuthProvider({ children }:AuthProviderProps){
                 });
                 return false
             }else{
-                var isExist = await getUserByEmail(paramUser.email);
+                const isExist = await getUserByEmail(paramUser.email);
 
                 if(isExist){
                     toast.error(`${paramUser.email}, já está cadastrado !`, {
@@ -154,49 +153,6 @@ export function AuthProvider({ children }:AuthProviderProps){
         }
     }
 
-    async function createOrder(orderProducts: Product[], orderPrice: number){
-        try {
-            if(!orderProducts || orderProducts.length <= 0 || orderPrice <= 0){
-                toast.error('Problema ao tentar gerar pedido !!', {
-                    autoClose: 4000,
-                    position: toast.POSITION.BOTTOM_RIGHT
-                });
-            }else if(isAuthenticated){
-                const dateNow = new Date();
-
-                const order: Order = {
-                    idUser: user?.id,
-                    products: orderProducts,
-                    finalPrice: orderPrice,
-                    createdAt: dateNow.toISOString()
-                }
-                
-                firebase
-                .firestore()
-                .collection('orders')
-                .add(order)
-                .then((resp) => {
-                    toast.success('Pedido gerado com sucesso !', {
-                        autoClose: 4000,
-                        position: toast.POSITION.BOTTOM_RIGHT
-                    });
-                    sessionStorage.setItem('cart', '[]');
-                    router.push('/authentication/orders');
-                    return null
-                })
-            }else{
-                router.push('/authentication/login')
-                toast.warning('Para gerar um pedido requer login !', {
-                    autoClose: 4000,
-                    position: toast.POSITION.BOTTOM_RIGHT
-                });
-            }
-        } catch (error) {
-            console.log(error);
-            return null
-        }
-    }
-
     function logout(){
         setUser(undefined)
         setIsAuthenticated(false)
@@ -217,7 +173,6 @@ export function AuthProvider({ children }:AuthProviderProps){
                 isAuthenticated,
                 login,
                 createUser,
-                createOrder,
                 logout
             }}
         >

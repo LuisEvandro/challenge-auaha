@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Product } from '../../lib/interfaces';
 import { CartContext } from '../../contexts/CartContext';
 import { AuthContext } from '../../contexts/AuthContext';
+import { OrderContext } from '../../contexts/OrderContext';
 
 export default function Header() {
     const [ search, setSearch ] = useState<string>('')
@@ -15,7 +16,8 @@ export default function Header() {
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
 
     const { products, valueTotal } = useContext(CartContext)
-    const { user, isAuthenticated, logout, createOrder } = useContext(AuthContext)
+    const { isAuthenticated, logout } = useContext(AuthContext)
+    const { createOrder } = useContext(OrderContext)
 
     useEffect(() => {
         let totalPrice = 0

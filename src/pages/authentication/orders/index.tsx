@@ -115,7 +115,12 @@ export default function Orders() {
                                             )
                                         })
                                     ) : (
-                                        <h1>Não tem pedidos !</h1>
+                                        <div className={styles.order_isEmpty}>
+                                            <span className="material-icons">
+                                                search_off
+                                            </span>
+                                            <h2>não há pedidos !</h2>
+                                        </div>
                                     )
                                 }
                             </div>
