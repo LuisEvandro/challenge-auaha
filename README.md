@@ -32,6 +32,7 @@ $ cd challenge-auaha
 
 O Projeto usa conexão com firebase então requer conexão com o mesmo.
 Crie um arquivo na raiz do projeto ".env.local" com as chaves do seu firebase.
+*Atenção no firebase requer liberar as regras de leitura e gravação do banco de dados*
 
 ####Dados do ".env.local"
 ```bash
