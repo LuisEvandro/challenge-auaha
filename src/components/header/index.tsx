@@ -147,7 +147,9 @@ export default function Header() {
                                     </Link>
                                     {
                                         isAuthenticated && (
-                                            <a onClick={() => logout()}>Sair</a>
+                                            <Link href={''}>
+                                                <a onClick={() => logout()}>Sair</a>
+                                            </Link>
                                         )
                                     }
                                 </div>
@@ -304,7 +306,9 @@ export default function Header() {
                                 </div>
 
                                 <div>
-                                    <a onClick={() => logout()}>Sair</a>
+                                    <Link href={''}>
+                                        <a onClick={() => logout()}>Sair</a>
+                                    </Link>
                                 </div>
                             </>
                         ):(
