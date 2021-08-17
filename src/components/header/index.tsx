@@ -21,8 +21,8 @@ export default function Header() {
         let totalPrice = 0
         let totalQuantity = 0
         products.forEach((item: Product) => {
-            totalPrice = (((item.price - item.promotinalPrice) * item.quantity) + totalPrice)
-            totalQuantity = (item.quantity + totalQuantity)
+            totalPrice = (((item.price - item.promotinalPrice) * (item.quantity ? item.quantity : 1)) + totalPrice)
+            totalQuantity = ((item.quantity ? item.quantity : 1) + totalQuantity)
         })
 
         setTotalPriceCart(totalPrice)
@@ -327,32 +327,38 @@ export default function Header() {
                 <div className={styles.header_nav_options}>
                     <div id="aneis" onClick={() => {
                         let item = document.getElementById('aneis');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Anéis</span> <Image width={15} height={15} alt="Ver mais anéis" src={'/images/arrow.png'} objectFit="contain"/></div>
                     
                     <div id="brincos" onClick={() => {
                         let item = document.getElementById('brincos');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Brincos</span> <Image width={15} height={15} alt="Ver mais Brincos" src={'/images/arrow.png'} objectFit="contain"/></div>
                     
                     <div id="colares" onClick={() => {
                         let item = document.getElementById('colares');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Colares</span> <Image width={15} height={15} alt="Ver mais Colares" src={'/images/arrow.png'} objectFit="contain"/></div>
                     
                     <div id="pingentes" onClick={() => {
                         let item = document.getElementById('pingentes');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Pingentes</span> <Image width={15} height={15} alt="Ver mais Pingentes" src={'/images/arrow.png'} objectFit="contain"/></div>
                     
                     <div id="pulseiras" onClick={() => {
                         let item = document.getElementById('pulseiras');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Pulseiras</span> <Image width={15} height={15} alt="Ver mais Pulseiras" src={'/images/arrow.png'} objectFit="contain"/></div>
                     
                     <div id="kits" onClick={() => {
                         let item = document.getElementById('kits');
-                            item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
+                            if(item)
+                                item?.dataset.showItem == 'true' ? (item.dataset.showItem = "false") : (item.dataset.showItem = "true");
                     }}><span>Kits</span> <Image width={15} height={15} alt="Ver mais Kits" src={'/images/arrow.png'} objectFit="contain"/></div>
                 </div>
             </div>
