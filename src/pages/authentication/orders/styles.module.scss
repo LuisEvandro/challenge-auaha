@@ -100,6 +100,18 @@
                     }
                 }
             }
+
+            @media (max-width: 720px) {
+                .order_products_items{
+                    .order_product_item{
+                        .image_product{
+                            img{
+                                max-height: 75px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
