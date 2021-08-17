@@ -19,7 +19,7 @@ export default function LoginComponent() {
         
         setIsLoading(true)
         
-        await login(email,password, true)
+        await login(email,password)
 
         setIsLoading(false)
     }
