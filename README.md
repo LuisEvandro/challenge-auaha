@@ -17,7 +17,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Firebase](https://firebase.google.com/)
 
-##Deploy do projeto
+## Deploy do projeto
   ##### Link de acesso: https://challenge-auaha-ozn9hlqy1-luisevandro.vercel.app/
 ## Como executar
 
@@ -28,13 +28,13 @@ $ git clone https://github.com/LuisEvandro/challenge-auaha.git
 $ cd challenge-auaha
 ```
 
-####Para iniciá-lo, siga os passos abaixo:
+#### Para iniciá-lo, siga os passos abaixo:
 
 O Projeto usa conexão com firebase então requer conexão com o mesmo.
 Crie um arquivo na raiz do projeto ".env.local" com as chaves do seu firebase.
 *Atenção no firebase requer liberar as regras de leitura e gravação do banco de dados*
 
-####Dados do ".env.local"
+#### Dados do ".env.local"
 ```bash
   NEXT_PUBLIC_FIREBASE_API_KEY_ID=SEU KEY ID
   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=SUA AUTH DOMAIN
@@ -46,7 +46,7 @@ Crie um arquivo na raiz do projeto ".env.local" com as chaves do seu firebase.
 
 No firebase requer a criação de um "Firebase Database", por padrão crie algumas coleções
 
-####Coleções
+#### Coleções
   ►users
   ►orders
   ►products
@@ -54,7 +54,7 @@ No firebase requer a criação de um "Firebase Database", por padrão crie algum
 
 products e banners requer adicionar os registro manualmente de acordo com os formatos a seguir
 
-####Products
+#### Products
   ** Atenção as imagens declaradas nos campos de "imagePath" devem estar na respectiva pasta do projeto **
 ```bash
   {
@@ -69,7 +69,7 @@ products e banners requer adicionar os registro manualmente de acordo com os for
   }
 ```
 
-####Banners
+#### Banners
   ** Atenção as imagens declaradas nos campos de "imagePath" devem estar na respectiva pasta do projeto **
 ```bash
   {
@@ -79,7 +79,7 @@ products e banners requer adicionar os registro manualmente de acordo com os for
   }
 ```
 
-####Como rodar o projeto
+#### Como rodar o projeto
 ```bash
 # Instalar as dependências
 $ yarn
