@@ -5,7 +5,6 @@ import { MainCarrosel } from '../components/sliders/carroselMain'
 import { CardFreghtAndParcel } from '../components/cardFreghtAndParcel'
 import { PromotionsCarrosel } from '../components/sliders/carroselPromotions'
 
-import productsTemp from '../../utils/productsTemp.json'
 import firebase from 'firebase/app'
 
 import styles from '../styles/home.module.scss'
@@ -14,13 +13,6 @@ import { Newsletter } from '../components/newsletter'
 import { Product } from '../lib/interfaces'
 
 export default function Home(products: Product[]) {
-  const imagesCarroselMain = [
-    "/images/banner_main.png",
-    "/images/banner_main.png",
-    "/images/banner_main.png",
-    "/images/banner_main.png"
-  ];
-
   return (
     <>
       <Head>
@@ -29,7 +21,7 @@ export default function Home(products: Product[]) {
       
       <div className={styles.slider_main_content}>
 
-        <MainCarrosel images={imagesCarroselMain} />
+        <MainCarrosel />
         
         <CardFreghtAndParcel />
 
@@ -126,15 +118,14 @@ export default function Home(products: Product[]) {
     </>
   )
 }
-export const getStaticProps = async () => {
-  let products = []
+export const getStaticProps: GetStaticProps = async () => {
+  const products: Product[] = []
   try {
     const querySnapshot = await firebase
-      .firestore()
-      .collection('products')
-      .orderBy('name', 'desc')
-      .get();
-  
+                                .firestore()
+                                .collection('products')
+                                .orderBy('name', 'desc')
+                                .get();
     
     querySnapshot.forEach(function (doc: any) {
       products.push({

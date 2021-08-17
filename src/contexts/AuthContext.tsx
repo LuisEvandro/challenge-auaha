@@ -10,7 +10,7 @@ interface AuthContextInterface{
     isAuthenticated: boolean,
     login: (paramEmail: string, paramPass: string) => void,
     createUser: (paramUser: User, page?: string) => void,
-    createOrder: (paramOrder: Order) => void,
+    createOrder: (orderProducts: Product[], orderPrice: number) => void,
     logout: () => void,
 }
 
@@ -38,35 +38,25 @@ export function AuthProvider({ children }:AuthProviderProps){
 
     async function getUserByEmail(email: string){
         try {
-            var result: User = {
-                id: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: ''
-            };
-
             const querySnapshot = await firebase
                                         .firestore()
                                         .collection('users')
                                         .where('email', '==', email)
                                         .get();
             
-            console.log(querySnapshot);
             if(!querySnapshot.empty){
-                querySnapshot.forEach(function (doc: any) {
-                    result = {
-                        id: doc.id,
-                        ... doc.data(),
-                    }
-                })
+                const userData: User = {
+                    id: querySnapshot.docs[0].id,
+                    ... querySnapshot.docs[0].data()
+                }
+                return userData
             }
             
 
-            return result;
+            return null;
         } catch (error) {
             console.log(error);
-            return []
+            return null
         }
     }
 
@@ -80,8 +70,7 @@ export function AuthProvider({ children }:AuthProviderProps){
         }else{
             try {
                 const userResult = await getUserByEmail(paramEmail);
-
-                if(userResult.id != ''){
+                if(userResult){
                     if(userResult.password === paramPass){
 
                         sessionStorage.setItem('user', JSON.stringify(userResult))
@@ -93,7 +82,6 @@ export function AuthProvider({ children }:AuthProviderProps){
                             position: toast.POSITION.BOTTOM_RIGHT
                         });
 
-                        router.reload()
                     }else{
                         toast.error('Senha incorreta !', {
                             autoClose: 4000,
@@ -127,7 +115,7 @@ export function AuthProvider({ children }:AuthProviderProps){
             }else{
                 var isExist = await getUserByEmail(paramUser.email);
 
-                if(isExist.id){
+                if(isExist){
                     toast.error(`${paramUser.email}, já está cadastrado !`, {
                         autoClose: 4000,
                         position: toast.POSITION.BOTTOM_RIGHT
@@ -148,7 +136,6 @@ export function AuthProvider({ children }:AuthProviderProps){
                             autoClose: 4000,
                             position: toast.POSITION.BOTTOM_RIGHT
                         });
-                        router.push('/')
                         return true
                     })
                 }
@@ -163,50 +150,47 @@ export function AuthProvider({ children }:AuthProviderProps){
         }
     }
 
-    function createOrder(paramOrder: Order){
-        // try {
-        //     if(!paramOrder){
-        //         toast.error('Erro ao tentar criar pedido !', {
-        //             autoClose: 4000,
-        //             position: toast.POSITION.BOTTOM_RIGHT
-        //         });
-        //         return false
-        //     }else{
-        //         let sessionUsers = JSON.parse(sessionStorage.getItem('users'));
-        //         let status = false;
-        //         sessionUsers.map((user: User) => {
-        //             if(user.guid == tokenState){
-        //                 status = true
-        //                 user.orders.push(paramOrder)
+    async function createOrder(orderProducts: Product[], orderPrice: number){
+        try {
+            if(!orderProducts || orderProducts.length <= 0 || orderPrice <= 0){
+                toast.error('Problema ao tentar gerar pedido !!', {
+                    autoClose: 4000,
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+            }else if(isAuthenticated){
+                const dateNow = new Date();
 
-        //                 setUser(user);
-        //             }
-        //         })
-
-        //         if(status){
-        //             sessionStorage.setItem('users', JSON.stringify(sessionUsers))
-                    
-        //             toast.success('Pedido gerado com sucesso !', {
-        //                 autoClose: 4000,
-        //                 position: toast.POSITION.BOTTOM_RIGHT
-        //             });
-
-        //             router.push('/authentication/orders');
-        //         }else{
-        //             toast.error('Problema ao tentar gerar pedido !!', {
-        //                 autoClose: 4000,
-        //                 position: toast.POSITION.BOTTOM_RIGHT
-        //             });
-        //         }
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        //     toast.error(error, {
-        //         autoClose: 4000,
-        //         position: toast.POSITION.BOTTOM_RIGHT
-        //     });
-        //     return false
-        // }
+                const order: Order = {
+                    idUser: user?.id,
+                    products: orderProducts,
+                    finalPrice: orderPrice,
+                    createdAt: dateNow.toISOString()
+                }
+                
+                firebase
+                .firestore()
+                .collection('orders')
+                .add(order)
+                .then((resp) => {
+                    toast.success('Pedido gerado com sucesso !', {
+                        autoClose: 4000,
+                        position: toast.POSITION.BOTTOM_RIGHT
+                    });
+                    sessionStorage.setItem('cart', '[]');
+                    router.push('/authentication/orders');
+                    return null
+                })
+            }else{
+                router.push('/authentication/login')
+                toast.warning('Para gerar um pedido requer login !', {
+                    autoClose: 4000,
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            return null
+        }
     }
 
     function logout(){

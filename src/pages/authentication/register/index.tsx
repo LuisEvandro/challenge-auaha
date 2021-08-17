@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import router from 'next/router';
-
+import Head from 'next/head'
 import styles from './styles.module.scss'
 import { AuthContext } from '../../../contexts/AuthContext';
 
@@ -19,10 +19,15 @@ export default function Register() {
     },[isAuthenticated])
 
     return (
-        <div className="container">
-            <div className={styles.register_page_container}>
-                <RegisterComponent />
+        <>
+            <Head>
+                <title>Cadastro | Challenge-Auaha</title>
+            </Head>
+            <div className="container">
+                <div className={styles.register_page_container}>
+                    <RegisterComponent />
+                </div>
             </div>
-        </div>
+        </>
     )
 }

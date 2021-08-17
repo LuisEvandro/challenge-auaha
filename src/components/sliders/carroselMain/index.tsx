@@ -1,11 +1,38 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from './styles.module.scss'
+import firebase from 'firebase/app'
 
 import Slider from "react-slick";
+import { Banner } from "../../../lib/interfaces";
+import { useEffect, useState } from "react";
 
-export function MainCarrosel({images}: any) {
+export function MainCarrosel() {
+    const [ banners, setBanners ] = useState<Banner[]>([])
+
+    async function getBanners() {
+        const bannersTemp: Banner[] = []
+        const querySnapshot = await firebase
+                                .firestore()
+                                .collection('banners')
+                                .orderBy('order', 'asc')
+                                .get();
     
+        querySnapshot.forEach(function (doc: any) {
+            bannersTemp.push({
+                id: doc.id,
+                ... doc.data(),
+            })
+        })
+
+        setBanners(bannersTemp)
+    }
+
+    useEffect(() => {
+        getBanners()
+    }, [])
+
+
     const settings = {
         dots: true,
         infinite: true,
@@ -37,11 +64,11 @@ export function MainCarrosel({images}: any) {
     return (
         <>
             <Slider {...settings}>
-                {images.length > 0 ? (
-                    images.map((img: string, index: number) => {
+                {banners.length > 0 ? (
+                    banners.map((img: Banner, index: number) => {
                         return (
                             <figure key={index}>
-                                <img src={img} alt={'Slide '+index} className={styles.slider_image} />
+                                <img src={img.imagePath} alt={img.name} className={styles.slider_image} />
                             </figure>
                         )
                     })

@@ -7,7 +7,7 @@ export interface User{
 }
 
 export interface Product{
-    id: string,
+    id?: string,
     imagePath: string,
     name: string,
     price: number,
@@ -19,14 +19,16 @@ export interface Product{
 }
 
 export interface Order{
-    id: string,
+    id?: string,
+    idUser?: string,
     products: Product[],
     createdAt: string,
     finalPrice: number
 }
 
-export interface Banners{
-    id: string,
+export interface Banner{
+    id?: string,
+    order: number,
     imagePath: string,
     name: string
 }

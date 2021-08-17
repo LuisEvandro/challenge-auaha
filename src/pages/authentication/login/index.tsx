@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import router from 'next/router';
-
+import Head from 'next/head'
 import styles from './styles.module.scss'
 
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -20,10 +20,16 @@ export default function Login() {
     },[isAuthenticated])
 
     return (
-        <div className="container">
-            <div className={styles.login_page_container}>
-                <LoginComponent />
+        <>
+            <Head>
+                <title>Login | Challenge-Auaha</title>
+            </Head>
+
+            <div className="container">
+                <div className={styles.login_page_container}>
+                    <LoginComponent />
+                </div>
             </div>
-        </div>
+        </>
     )
 }

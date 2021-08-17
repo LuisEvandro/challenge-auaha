@@ -15,7 +15,7 @@ export default function Header() {
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
 
     const { products, valueTotal } = useContext(CartContext)
-    const { user, isAuthenticated, logout } = useContext(AuthContext)
+    const { user, isAuthenticated, logout, createOrder } = useContext(AuthContext)
 
     useEffect(() => {
         let totalPrice = 0
@@ -199,7 +199,7 @@ export default function Header() {
 
                                     {
                                         products.length > 0 ? (
-                                            <div className={styles.pop_cart_finally_cart}>
+                                            <div className={styles.pop_cart_finally_cart} onClick={() => createOrder(products, valueTotal)}>
                                                 <p>Finalizar compra</p>
                                             </div>
                                         ) : ( 
@@ -275,9 +275,17 @@ export default function Header() {
                             <div className={styles.pop_cart_footer}>
                                 <p className={styles.pop_cart_subtotal}>Subtotal <span>{(totalPriceCart).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span></p>
 
-                                <div className={styles.pop_cart_finally_cart}>
-                                    <p>Finalizar compra</p>
-                                </div>
+                                {
+                                    products.length > 0 ? (
+                                        <div className={styles.pop_cart_finally_cart} onClick={() => createOrder(products, valueTotal)}>
+                                            <p>Finalizar compra</p>
+                                        </div>
+                                    ) : ( 
+                                        <div className={styles.pop_cart_finally_cart} style={{opacity: .5}}>
+                                            <p>Finalizar compra</p>
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

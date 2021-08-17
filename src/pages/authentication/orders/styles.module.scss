@@ -1,0 +1,95 @@
+.orders_page_container{
+    margin: 80px 0;
+
+    .loading_box{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        p{
+            margin-top: 30px;
+            color: var(--color-layout-5);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    }
+
+    .box_list_orders{
+        .order_content{
+            margin: 30px 0;
+            cursor: pointer;
+
+            .order_title_toggle{
+                padding: 20px;
+
+                box-shadow: 0px 0px 20px -10px var(--color-layout-5);
+                background-color: var(--color-layout-4);
+                .order_id, .order_price, .order_date{
+                    margin: 5px 0;
+                    color: var(--color-layout-5);
+                    font-weight: 600;
+                    
+                    span{
+                        margin-right: 10px;
+                        text-transform: uppercase;
+                        color: var(--color-layout-7);
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .order_products{
+                &[data-hidden="false"]{
+                    height: auto !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
+                
+                &[data-hidden="true"]{
+                    height: 0 !important;
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                }
+                
+                transition: all .4s ease-in-out;
+                
+                .order_products_items{
+                    padding: 20px;
+                    background-color: var(--color-layout-4);
+                    box-shadow: 0px 10px 15px -10px var(--color-layout-5);
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
+    
+                    .order_product_item{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+    
+                        margin-bottom: 15px;
+    
+                        .image_product{
+                            img{
+                                margin-right: 20px;
+                                max-height: 100px;
+                                box-shadow: 0px 0px 20px -10px var(--color-layout-5);
+                                border-radius: 50px;
+                            }
+                        }
+    
+                        .product_details{
+                            .name, .quantity_and_price{
+                                color: var(--color-layout-5);
+                            }
+    
+                            .name{
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
