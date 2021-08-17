@@ -47,10 +47,10 @@ Crie um arquivo na raiz do projeto ".env.local" com as chaves do seu firebase.
 No firebase requer a criação de um "Firebase Database", por padrão crie algumas coleções
 
 #### Coleções
-  ►users
-  ►orders
-  ►products
-  ►banners
+- users
+- orders
+- products
+- banners
 
 products e banners requer adicionar os registro manualmente de acordo com os formatos a seguir
 
